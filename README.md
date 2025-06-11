@@ -21,10 +21,10 @@ Clone repo
 
 ```
 git clone https://github.com/ZaneWillgruber/.dotfiles.git
-cd .dotfiles
+cd .dotfiles/config
 ```
 
 Use stow to create symlinks
 ```
-stow .
+stow . -t ~
 ```
