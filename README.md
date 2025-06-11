@@ -28,3 +28,10 @@ Use stow to create symlinks
 ```
 stow . -t ~
 ```
+
+Run install.sh
+```
+cd ..
+chmod +x install.sh
+./install.sh
+```
