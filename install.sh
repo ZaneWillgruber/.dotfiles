@@ -6,6 +6,7 @@ PACKAGES=(
 	"neofetch"
 	"hyprpaper"
 	"playerctl"
+	"discord"
 )
 
 echo "Updating system..."

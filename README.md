@@ -6,6 +6,11 @@ My dotfiles for my Arch and Hyperland system
 
 Make sure you have the following requirements on your system
 
+### Arch Profile
+
+-Desktop
+-Hyprland
+
 ### Git
 ```
 pacman -S git
