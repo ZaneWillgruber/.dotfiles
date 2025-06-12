@@ -4,6 +4,7 @@ PACKAGES=(
 	"spotify-launcher"
 	"ttf-nerd-fonts-symbols"
 	"neofetch"
+	"hyprpaper"
 )
 
 echo "Updating system..."
