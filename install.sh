@@ -5,6 +5,7 @@ PACKAGES=(
 	"ttf-nerd-fonts-symbols"
 	"neofetch"
 	"hyprpaper"
+	"playerctl"
 )
 
 echo "Updating system..."
