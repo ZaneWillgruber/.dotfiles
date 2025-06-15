@@ -1,3 +1,7 @@
 [user]
 	email = 73185743+ZaneWillgruber@users.noreply.github.com
 	name = Zane Willgruber
+[init]
+	defaultBranch = main
+[fetch]
+	prune = true

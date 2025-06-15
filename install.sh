@@ -3,10 +3,24 @@
 PACKAGES=(
 	"spotify-launcher"
 	"ttf-nerd-fonts-symbols"
+	"ttf-jetbrains-mono-nerd"
 	"neofetch"
 	"hyprpaper"
 	"playerctl"
 	"discord"
+	"waybar"
+	"otf-font-awesome"
+	"cliphist"
+	"pygobject" #to make waybar cutom/media work
+	"ghostty"
+	"zen-browser-bin"
+	"libastal-meta"
+	"aylurs-gtk-shell-git"
+	"gvfs"
+	"gvfs-smb"
+	"gvfs-goa"
+	"libsoup"
+	"gdk-pixbuf"
 )
 
 echo "Updating system..."
@@ -30,6 +44,17 @@ for package in "${PACKAGES[@]}"; do
 		echo "$package is already installed. Skipping..."
 	else
 		echo "$package is not installed. Installing..."
-		yay -S "$package" --noconfirm
+		yay -S "$package" --noconfirm --needed
 	fi
 done
+
+if id -nG zane | grep -qw input; then
+	echo "User zane is already in group input"
+else
+	sudo usermod -a -G input zane
+	if [[ $? -eq 0 ]]; then
+		echo "User zane has been added to group input"
+	else
+		echo "Error: Failed to add user 'zane' to group 'input'"
+	fi
+fi
