@@ -1,5 +1,8 @@
 # Dotfiles
 
+> [!WARNING]
+> Bare bones right now and continually being updated
+
 My dotfiles for my Arch and Hyperland system
 
 ## Requirements
