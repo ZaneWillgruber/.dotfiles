@@ -1,41 +1,39 @@
 @use "sass:color";
+@use '/home/zane/.cache/wal/colors.scss' as *;
 
-$bg: #212223;
-$fg: #f1f1f1;
-$accent: #378DF7;
-$radius: 5px;
+$bg: $background;
+$fg: $foreground;
+$accent: color.adjust($background, $lightness: 20%);
+$radius: 8px;
+$container-margin: 0px;
 
 window.Bar {
-    border: none;
-    box-shadow: none;
-    background-color: transparent;
+    background-color: $background;
     color: $fg;
     font-family: JetbrainsMono Nerd Font;
     font-size: 15px;
     font-weight: bold;
-    padding: 8px;
 
     label {
         margin: 0 8px;
     }
 
-    .Time {
-        background-color: #000000;
-        border-radius: $radius;
-        padding: 0px 8px;
+    .padding-8 {
+        padding: 4px;
     }
 
-    .Workspaces  {
-        background-color: #000000;
+    .Workspaces {
         border-radius: $radius;
         padding: 0px 8px;
+        margin: $container-margin;
+
         button {
             all: unset;
             background-color: transparent;
 
             &:hover label {
-                background-color: #ffffff;
-                color: #000000;
+                background-color: $fg;
+                color: $background;
                 border-color: transparent;
             }
 
@@ -48,23 +46,72 @@ window.Bar {
             transition: 200ms;
             padding: 0 8px;
             margin: 2px;
-            color: #ffffff;
+            color: $fg;
             border-radius: $radius;
-            border: 2pt solid;
+            border: 2px solid;
         }
 
         .focused label {
-            color: #000000;
-            background-color: #ffffff;
+            color: $background;
+            background-color: $fg;
             border-color: transparent;
         }
     }
 
-    .SysTray {
-        margin-right: 8px;
+    .Tray {
 
         button {
+            all: unset;
+            background-color: transparent;
+            transition: 200ms;
             padding: 0 4px;
+            margin: 2px;
+            color: $fg;
+            border-radius: $radius;
+            border: 2px solid;
+        }
+
+    }
+
+    .BarComponent {
+        border-radius: $radius;
+        border-color: $foreground;
+        border: 2px solid;
+        padding-right: 8px;
+        margin-left: 4px;
+
+        * {
+            all: unset;
+        }
+
+        image {
+            margin-right: .6em;
+            background-color: $foreground;
+            color: $background;
+            padding-left: 8px;
+            padding-right: 8px;
+            border-radius: 4px 0px 0px 4px;
+        }
+    }
+
+    .Wifi {
+        border-radius: $radius;
+        border-color: $foreground;
+        border: 2px solid;
+        padding-right: 8px;
+        margin-left: 4px;
+
+        * {
+            all: unset;
+        }
+
+        image {
+            margin-right: .6em;
+            background-color: $foreground;
+            color: $background;
+            padding-left: 8px;
+            padding-right: 8px;
+            border-radius: 4px 0px 0px 4px;
         }
     }
 
@@ -76,6 +123,24 @@ window.Bar {
         background-color: #66cc99;
         color: #2a5c45;
         border-radius: $radius;
+        padding: 4px;
+        margin: $container-margin;
+    }
+
+    .System {
+        background-color: $foreground;
+        padding: 0px 8px;
+        margin-left: 8px;
+        border-radius: 12px;
+        color: $background;
+    }
+
+    .ArchLogo {
+        background-color: $foreground;
+        padding-right: 5px;
+        margin-left: 8px;
+        border-radius: 12px;
+        color: $background;
     }
 
     .Media .Cover {
@@ -86,41 +151,36 @@ window.Bar {
         background-size: contain;
     }
 
+    .ModulesRight {
+        background-color: #000000;
+        border-radius: $radius;
+        padding: 0px 80px;
+    }
+
     .Battery label {
         padding-left: 0;
         margin-left: 0;
     }
 
     .AudioSlider {
+        border-radius: $radius;
+        border-color: $foreground;
+        border: 2px solid;
+        padding-right: 8px;
+        margin-left: 4px;
+
         * {
             all: unset;
         }
 
-        icon {
+        image {
             margin-right: .6em;
+            background-color: $foreground;
+            color: $background;
+            padding-left: 8px;
+            padding-right: 8px;
+            border-radius: 4px 0px 0px 4px;
         }
 
-        & {
-            margin: 0 1em;
-        }
-
-        trough {
-            background-color: color.adjust($fg, $alpha: -0.8);
-            border-radius: $radius;
-        }
-
-        highlight {
-            background-color: $accent;
-            min-height: .8em;
-            border-radius: $radius;
-        }
-
-        slider {
-            background-color: $fg;
-            border-radius: $radius;
-            min-height: 1em;
-            min-width: 1em;
-            margin: -.2em;
-        }
     }
 }

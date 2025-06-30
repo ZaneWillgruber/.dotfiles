@@ -21,6 +21,15 @@ PACKAGES=(
 	"gvfs-goa"
 	"libsoup"
 	"gdk-pixbuf"
+	"networkmanager"
+	"gcc"
+	"make"
+	"git"
+	"ripgrep"
+	"fd"
+	"unzip"
+	"neovim"
+	"wl-clipboard"
 )
 
 echo "Updating system..."
