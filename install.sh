@@ -30,6 +30,7 @@ PACKAGES=(
 	"unzip"
 	"neovim"
 	"wl-clipboard"
+	"tmux"
 )
 
 echo "Updating system..."
