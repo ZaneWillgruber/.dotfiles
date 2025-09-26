@@ -11,9 +11,9 @@ PACKAGES=(
 	"fd"
 	"unzip"
 	"neovim"
-	"wl-clipboard"
 	"tmux"
 	"fzf"
+	"bat"
 )
 
 echo "Updating system..."
@@ -40,3 +40,11 @@ for package in "${PACKAGES[@]}"; do
 		yay -S "$package" --noconfirm --needed
 	fi
 done
+
+# install tmux package manager
+if [ ! -d ~/.tmux/plugins/tpm ]; then
+    echo "Cloning tmux plugin manager (tpm)..."
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+else
+    echo "tmux plugin manager (tpm) is already installed."
+fi

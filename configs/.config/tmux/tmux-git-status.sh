@@ -14,5 +14,5 @@ if git -C "$pane_path" rev-parse --is-inside-work-tree >/dev/null 2>&1; then
 		branch_display="$branch"
 	fi
 
-	echo "#[fg=yellow, bg=black]#[fg=black, bg=yellow]$branch_display #[fg=red, bg=yellow]#[fg=black, bg=red]$repo_name  "
+	echo "#[fg=#ebcb8b,bg=#2e3440]#[fg=#2e3440,bg=#ebcb8b]$branch_display #[fg=#8fbcbb,bg=#ebcb8b]#[fg=#2e3440,bg=#8fbcbb]$repo_name "
 fi
