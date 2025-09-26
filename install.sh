@@ -3,30 +3,33 @@
 PACKAGES=(
 	"spotify-launcher"
 	"ttf-nerd-fonts-symbols"
-	"ttf-jetbrains-mono-nerd"
+	"pavucontrol" #used to control sounds
+	# "ttf-jetbrains-mono-nerd"
 	"neofetch"
-	"hyprpaper"
-	"playerctl"
+	# "hyprpaper"
+	# "playerctl"
 	"discord"
-	"waybar"
+	# "waybar"
 	"otf-font-awesome"
-	"cliphist"
-	"pygobject" #to make waybar cutom/media work
+	# "cliphist"
+	# "pygobject" #to make waybar cutom/media work
 	"ghostty"
 	"zen-browser-bin"
-	"libastal-meta"
-	"aylurs-gtk-shell-git"
-	"gvfs"
-	"gvfs-smb"
-	"gvfs-goa"
-	"libsoup"
-	"gdk-pixbuf"
-	"networkmanager"
+	# "libastal-meta"
+	# "aylurs-gtk-shell-git"
+	# "gvfs"
+	# "gvfs-smb"
+	# "gvfs-goa"
+	# "libsoup"
+	# "gdk-pixbuf"
+	# "networkmanager"
 	"gcc"
 	"make"
 	"git"
 	"ripgrep"
 	"fd"
+	"bat"
+	"less"
 	"unzip"
 	"neovim"
 	"wl-clipboard"
@@ -58,13 +61,21 @@ for package in "${PACKAGES[@]}"; do
 	fi
 done
 
-if id -nG zane | grep -qw input; then
-	echo "User zane is already in group input"
+# if id -nG zane | grep -qw input; then
+# 	echo "User zane is already in group input"
+# else
+# 	sudo usermod -a -G input zane
+# 	if [[ $? -eq 0 ]]; then
+# 		echo "User zane has been added to group input"
+# 	else
+# 		echo "Error: Failed to add user 'zane' to group 'input'"
+# 	fi
+# fi
+
+# install tmux package manager
+if [ ! -d ~/.tmux/plugins/tpm ]; then
+    echo "Cloning tmux plugin manager (tpm)..."
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 else
-	sudo usermod -a -G input zane
-	if [[ $? -eq 0 ]]; then
-		echo "User zane has been added to group input"
-	else
-		echo "Error: Failed to add user 'zane' to group 'input'"
-	fi
+    echo "tmux plugin manager (tpm) is already installed."
 fi
