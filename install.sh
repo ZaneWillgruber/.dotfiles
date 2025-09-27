@@ -14,6 +14,7 @@ PACKAGES=(
 	"libnotify"
 	"hyprlock"
 	"aurutils"
+	"wlogout"
 	#end style
 	"spotify-launcher"
 	"ttf-nerd-fonts-symbols"
