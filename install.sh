@@ -1,6 +1,18 @@
 #!/bin/bash
 
 PACKAGES=(
+	#for style
+	"python-pywal16"
+	"swww"
+	"fd"
+	"hyprpicker"
+	"blueman"
+	"bluez"
+	"networkmanager"
+	"swaync"
+	"gvfs"
+	"libnotify"
+	#end style
 	"spotify-launcher"
 	"ttf-nerd-fonts-symbols"
 	"pavucontrol" #used to control sounds
