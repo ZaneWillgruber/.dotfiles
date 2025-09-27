@@ -12,9 +12,9 @@ PACKAGES=(
 	"swaync"
 	"gvfs"
 	"libnotify"
-	"hyprlock"
-	"aurutils"
-	"wlogout"
+	"hyprlock" #lock screen
+	"wlogout" #logout options
+	"starship" #shell prompt
 	#end style
 	"spotify-launcher"
 	"ttf-nerd-fonts-symbols"
@@ -22,23 +22,10 @@ PACKAGES=(
 	"pavucontrol" #used to control sounds
 	# "ttf-jetbrains-mono-nerd"
 	"neofetch"
-	# "hyprpaper"
-	# "playerctl"
 	"discord"
-	# "waybar"
 	"otf-font-awesome"
-	# "cliphist"
-	# "pygobject" #to make waybar cutom/media work
 	"ghostty"
 	"zen-browser-bin"
-	# "libastal-meta"
-	# "aylurs-gtk-shell-git"
-	# "gvfs"
-	# "gvfs-smb"
-	# "gvfs-goa"
-	# "libsoup"
-	# "gdk-pixbuf"
-	# "networkmanager"
 	"gcc"
 	"make"
 	"git"
