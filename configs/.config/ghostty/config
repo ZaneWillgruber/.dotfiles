@@ -42,4 +42,4 @@
 # # Just for example:
 resize-overlay-duration = 0s 0ms
 confirm-close-surface = "false"
-font-family = "CodeNewRoman Nerd Font Propo"
+# font-family = "CodeNewRoman Nerd Font Propo"
