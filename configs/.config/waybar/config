@@ -15,7 +15,7 @@
                 "empty": ""
             },
             "persistent-workspaces": {
-                "*": [ 1,2,3,4,5 ]
+                "*": [ 1,2,3 ]
             }
         },
         "custom/notification": {
@@ -81,8 +81,8 @@
         },
         "custom/pacman": {
             "format": "󰅢 {}",
-            "interval": 30,   
-            "exec": "checkupdates | wc -l",
+            "interval": 30,
+            "exec": "yay -Qua",
             "exec-if": "exit 0",
             "on-click": "kitty sh -c 'yay -Syu; echo Done - Press enter to exit; read'; pkill -SIGRTMIN+8 waybar",
             "signal": 8,

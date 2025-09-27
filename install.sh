@@ -12,9 +12,12 @@ PACKAGES=(
 	"swaync"
 	"gvfs"
 	"libnotify"
+	"hyprlock"
+	"aurutils"
 	#end style
 	"spotify-launcher"
 	"ttf-nerd-fonts-symbols"
+	"otf-codenewroman-nerd"
 	"pavucontrol" #used to control sounds
 	# "ttf-jetbrains-mono-nerd"
 	"neofetch"
