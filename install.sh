@@ -22,7 +22,7 @@ PACKAGES=(
 	"pavucontrol" #used to control sounds
 	# "ttf-jetbrains-mono-nerd"
 	"neofetch"
-	"discord"
+	"vesktop"
 	"otf-font-awesome"
 	"ghostty"
 	"zen-browser-bin"
