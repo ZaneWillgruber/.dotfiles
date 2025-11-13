@@ -11,4 +11,5 @@ alias Settings='cd ~/.dotfiles/configs/.config && nvim .'
 PS1='[\u@\h \W]\$ '
 
 eval "$(starship init bash)"
-(cat ~/.cache/wal/sequences &)
+# (cat ~/.cache/wal/sequences &)
+export PATH=$PATH:$HOME/go/bin
