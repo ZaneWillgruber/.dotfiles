@@ -13,3 +13,6 @@ PS1='[\u@\h \W]\$ '
 eval "$(starship init bash)"
 # (cat ~/.cache/wal/sequences &)
 export PATH=$PATH:$HOME/go/bin
+
+# Created by `pipx` on 2026-01-26 16:22:39
+export PATH="$PATH:/home/zane/.local/bin"
