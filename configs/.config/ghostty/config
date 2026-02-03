@@ -35,6 +35,7 @@ theme = IBM 5153 CGA (Black)
 # # part of the value. For example, this will have a value of "#123abc":
 background-opacity = 0.90
 background = #000000
+font-size = 10
 #
 # # Empty values are used to reset config keys to default.
 # key =
