@@ -22,7 +22,6 @@ PACKAGES=(
 	"pavucontrol" #used to control sounds
 	# "ttf-jetbrains-mono-nerd"
 	"neofetch"
-	"discord"
 	"otf-font-awesome"
 	"ghostty"
 	"zen-browser-bin"
@@ -63,17 +62,6 @@ for package in "${PACKAGES[@]}"; do
 		yay -S "$package" --noconfirm --needed
 	fi
 done
-
-# if id -nG zane | grep -qw input; then
-# 	echo "User zane is already in group input"
-# else
-# 	sudo usermod -a -G input zane
-# 	if [[ $? -eq 0 ]]; then
-# 		echo "User zane has been added to group input"
-# 	else
-# 		echo "Error: Failed to add user 'zane' to group 'input'"
-# 	fi
-# fi
 
 # install tmux package manager
 if [ ! -d ~/.tmux/plugins/tpm ]; then
