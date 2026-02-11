@@ -16,3 +16,6 @@ export PATH=$PATH:$HOME/go/bin
 
 # Created by `pipx` on 2026-01-26 16:22:39
 export PATH="$PATH:/home/zane/.local/bin"
+
+# opencode
+export PATH=/home/zane/.opencode/bin:$PATH
