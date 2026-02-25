@@ -19,3 +19,7 @@ export PATH="$PATH:/home/zane/.local/bin"
 
 # opencode
 export PATH=/home/zane/.opencode/bin:$PATH
+export PATH="$HOME/.npm-global/bin:$PATH"
+
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv bash)"
