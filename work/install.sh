@@ -20,7 +20,7 @@ PACKAGES=(
 	"ttf-nerd-fonts-symbols"
 	"otf-codenewroman-nerd"
 	"pavucontrol" #used to control sounds
-	# "ttf-jetbrains-mono-nerd"
+	"ttf-jetbrains-mono-nerd"
 	"neofetch"
 	"otf-font-awesome"
 	"ghostty"
@@ -36,6 +36,7 @@ PACKAGES=(
 	"neovim"
 	"wl-clipboard"
 	"tmux"
+	"hyprshot"
 )
 
 echo "Updating system..."
