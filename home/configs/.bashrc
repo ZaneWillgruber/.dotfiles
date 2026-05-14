@@ -19,3 +19,11 @@ export PATH="$PATH:/home/zane/.local/bin"
 
 # opencode
 export PATH=/home/zane/.opencode/bin:$PATH
+
+# pnpm
+export PNPM_HOME="/home/zane/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
