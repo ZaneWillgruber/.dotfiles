@@ -243,11 +243,6 @@ end
 local rtp = vim.opt.rtp
 rtp:prepend(lazypath)
 
--- for godot
-local projectfile = vim.fn.getcwd() .. '/project.godot'
-if projectfile then
-  -- vim.fn.serverstart './godothost'
-end
 
 -- [[ Configure and install plugins ]]
 --
@@ -676,16 +671,15 @@ require('lazy').setup({
       --  When you add blink.cmp, luasnip, etc. Neovim now has *more* capabilities.
       --  So, we create new capabilities with blink.cmp, and then broadcast that to the servers.
       local capabilities = require('blink.cmp').get_lsp_capabilities()
-      require('lspconfig').gdscript.setup(capabilities)
-      require('lspconfig').omnisharp.setup {
+vim.lsp.config('omnisharp', {
         cmd = {
           'mono',
           '--assembly-loader=strict',
           '/home/zane/.omnisharp/run',
         },
-        on_attach = on_attach,
         use_mono = true,
-      }
+      })
+      vim.lsp.enable('omnisharp')
 
       -- Enable the following language servers
       --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
@@ -755,7 +749,8 @@ require('lazy').setup({
             -- by the server configuration above. Useful when disabling
             -- certain features of an LSP (for example, turning off formatting for ts_ls)
             server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-            require('lspconfig')[server_name].setup(server)
+            vim.lsp.config(server_name, server)
+            vim.lsp.enable(server_name)
           end,
         },
       }
@@ -795,6 +790,9 @@ require('lazy').setup({
       formatters_by_ft = {
         lua = { 'stylua' },
         javascript = { 'prettier' },
+        javascriptreact = { 'prettier' },
+        typescript = { 'prettier' },
+        typescriptreact = { 'prettier' },
         html = { 'prettier' },
         json = { 'prettier' },
         yaml = { 'prettier' },
@@ -951,14 +949,12 @@ require('lazy').setup({
   },
   { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
+    branch = 'main',
     build = ':TSUpdate',
-    main = 'nvim-treesitter.configs', -- Sets main module to use for opts
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
-    opts = {
-      ensure_installed = {
-        'gdscript',
-        'godot_resource',
-        'gdshader',
+    -- The main branch dropped nvim-treesitter.configs; highlighting is native in nvim 0.11+.
+    config = function()
+      require('nvim-treesitter.install').install {
         'bash',
         'c',
         'diff',
@@ -970,18 +966,8 @@ require('lazy').setup({
         'query',
         'vim',
         'vimdoc',
-      },
-      -- Autoinstall languages that are not installed
-      auto_install = true,
-      highlight = {
-        enable = true,
-        -- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
-        --  If you are experiencing weird indenting issues, add the language to
-        --  the list of additional_vim_regex_highlighting and disabled languages for indent.
-        additional_vim_regex_highlighting = { 'ruby' },
-      },
-      indent = { enable = true, disable = { 'ruby', 'gdscript' } },
-    },
+      }
+    end,
     -- There are additional nvim-treesitter modules that you can use to interact
     -- with nvim-treesitter. You should go explore a few and see what interests you:
     --
@@ -989,8 +975,6 @@ require('lazy').setup({
     --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
     --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
   },
-
-  { 'habamax/vim-godot', event = 'VimEnter' },
 
   -- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the
   -- init.lua. If you want these files, they are in the repository, so you can just download them and
