@@ -16,9 +16,9 @@ set -euo pipefail
 LEFT_SERIAL="4C4XR83"    # left external
 RIGHT_SERIAL="FB4XR83"   # right external (the one with a phantom twin)
 
-# Scale + mode for the externals (4K panels; 1.5 => 2560x1440 logical "1440p")
+# Scale + mode for the externals (4K panels; 1.25 => 3072x1728 logical)
 EXT_MODE="3840x2160@60"
-EXT_SCALE="1.5"
+EXT_SCALE="1.25"
 
 # Laptop panel (stays on, top-left). scale 2 => 1920x1200 logical.
 LAPTOP_MODE="3840x2400@59.99"
@@ -26,11 +26,11 @@ LAPTOP_SCALE="2"
 LAPTOP_POS="0x0"
 
 # Logical widths at the scales above:
-#   laptop  = 3840/2   = 1920  -> occupies x 0..1920
-#   left    = 3840/1.5 = 2560  -> place at 1920 -> x 1920..4480
-#   right   = 3840/1.5 = 2560  -> place at 4480 -> x 4480..7040
+#   laptop  = 3840/2    = 1920  -> occupies x 0..1920
+#   left    = 3840/1.25 = 3072  -> place at 1920 -> x 1920..4992
+#   right   = 3840/1.25 = 3072  -> place at 4992 -> x 4992..8064
 LEFT_POS="1920x0"
-RIGHT_POS="4480x0"
+RIGHT_POS="4992x0"
 
 get_monitors_json() { hyprctl monitors -j; }
 

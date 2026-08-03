@@ -23,3 +23,8 @@ export PATH="$HOME/.npm-global/bin:$PATH"
 
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv bash)"
+
+# brew shellenv exports HOMEBREW_PREFIX, which awww misreads as its cache root
+# (tries to write ~/.cache to /home/linuxbrew/.linuxbrew/.cache/awww and fails).
+# Pin XDG_CACHE_HOME so `awww img` writes where the daemon/`awww restore` reads.
+export XDG_CACHE_HOME="$HOME/.cache"
