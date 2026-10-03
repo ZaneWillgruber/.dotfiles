@@ -37,4 +37,7 @@ return {
   {
     'let-def/texpresso.vim',
   },
+  {
+    'vyfor/cord.nvim',
+  },
 }
