@@ -9,6 +9,14 @@ return {
         markdown = { 'markdownlint' },
       }
 
+      -- gdlint ships in gdtoolkit (`pipx install gdtoolkit`), which is separate
+      -- from Godot itself. Registering it unconditionally makes nvim-lint throw
+      -- an ENOENT on every .gd buffer when it isn't installed, so only wire it
+      -- up when it's actually on PATH.
+      if vim.fn.executable 'gdlint' == 1 then
+        lint.linters_by_ft.gdscript = { 'gdlint' }
+      end
+
       -- To allow other plugins to add linters to require('lint').linters_by_ft,
       -- instead set linters_by_ft like this:
       -- lint.linters_by_ft = lint.linters_by_ft or {}

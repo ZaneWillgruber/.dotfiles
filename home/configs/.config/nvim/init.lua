@@ -93,6 +93,10 @@ vim.g.maplocalleader = ' '
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = false
 
+-- Treat ambiguous .tex files as LaTeX rather than plain TeX, so the `tex`
+-- ftplugins (and TeXpresso) load even before a \documentclass is written.
+vim.g.tex_flavor = 'latex'
+
 -- [[ Setting options ]]
 -- See `:help vim.o`
 -- NOTE: You can change these options as you wish!
@@ -754,6 +758,14 @@ vim.lsp.config('omnisharp', {
           end,
         },
       }
+
+      -- Godot ships its own GDScript language server inside the editor (it
+      -- listens on 127.0.0.1:6005 whenever the project is open), so there is
+      -- no Mason package to install -- it has to be configured outside of the
+      -- `servers` table above. Open your project in Godot and nvim will
+      -- connect on the next `.gd` buffer.
+      vim.lsp.config('gdscript', { capabilities = capabilities })
+      vim.lsp.enable 'gdscript'
     end,
   },
 
@@ -778,6 +790,12 @@ vim.lsp.config('omnisharp', {
         -- have a well standardized coding style. You can add additional
         -- languages here or re-enable it for the disabled ones.
         local disable_filetypes = { c = true, cpp = true, ps1 = true }
+        -- Godot's LSP does not implement formatting, and a `lsp_format`
+        -- fallback would silently do nothing, so only format .gd files when
+        -- gdformat is actually installed.
+        if vim.bo[bufnr].filetype == 'gdscript' and vim.fn.executable 'gdformat' == 0 then
+          return nil
+        end
         if disable_filetypes[vim.bo[bufnr].filetype] then
           return nil
         else
@@ -789,6 +807,7 @@ vim.lsp.config('omnisharp', {
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
+        gdscript = { 'gdformat' },
         javascript = { 'prettier' },
         javascriptreact = { 'prettier' },
         typescript = { 'prettier' },
@@ -958,6 +977,9 @@ vim.lsp.config('omnisharp', {
         'bash',
         'c',
         'diff',
+        'gdscript',
+        'gdshader',
+        'godot_resource', -- .tscn / .tres scene and resource files
         'html',
         'lua',
         'luadoc',
@@ -967,6 +989,18 @@ vim.lsp.config('omnisharp', {
         'vim',
         'vimdoc',
       }
+
+      -- Neovim only auto-starts treesitter for the filetypes whose parsers it
+      -- bundles (lua, markdown, query, vimdoc, ...). The Godot ones are not
+      -- among them, so start them here -- otherwise .gd files fall back to the
+      -- older regex syntax file and .tscn/.tres get nothing at all.
+      vim.api.nvim_create_autocmd('FileType', {
+        group = vim.api.nvim_create_augroup('godot-treesitter', { clear = true }),
+        pattern = { 'gdscript', 'gdshader', 'gdresource' },
+        callback = function()
+          pcall(vim.treesitter.start)
+        end,
+      })
     end,
     -- There are additional nvim-treesitter modules that you can use to interact
     -- with nvim-treesitter. You should go explore a few and see what interests you:
@@ -1023,6 +1057,17 @@ vim.lsp.config('omnisharp', {
     },
   },
 })
+
+-- [[ Godot ]]
+-- Lets Godot open scripts in this nvim instance instead of spawning a new one.
+-- When nvim starts in a Godot project it listens on a `godothost` socket in the
+-- project root. To use it, set Godot's Editor Settings > Text Editor > External:
+--   Use External Editor: on
+--   Exec Path:  nvim
+--   Exec Flags: --server ./godothost --remote-send "<C-\><C-N>:n {file}<CR>{line}G{col}|"
+if vim.uv.fs_stat(vim.fn.getcwd() .. '/project.godot') then
+  pcall(vim.fn.serverstart, './godothost')
+end
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

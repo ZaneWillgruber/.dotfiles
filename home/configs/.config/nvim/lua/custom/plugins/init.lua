@@ -34,4 +34,7 @@ return {
       replace_keycodes = false,
     }),
   },
+  {
+    'let-def/texpresso.vim',
+  },
 }
