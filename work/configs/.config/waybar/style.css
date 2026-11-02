@@ -167,3 +167,14 @@ tooltip {
   padding: 0px 5px;
   transition: all 0.3s ease;
 }
+#custom-powersave {
+  padding: 0px 5px;
+  transition: all 0.3s ease;
+  color: @color7;
+}
+#custom-powersave.saver {
+  color: #26a65b;
+}
+#custom-powersave.performance {
+  color: #f53c3c;
+}

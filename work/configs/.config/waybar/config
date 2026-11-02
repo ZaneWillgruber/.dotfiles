@@ -103,7 +103,15 @@
                 "transition-to-left": true,
                 "click-to-reveal": true
             },
-            "modules": ["custom/expand", "custom/colorpicker","cpu","memory","temperature","custom/endpoint"],
+            "modules": ["custom/expand", "custom/powersave", "custom/colorpicker","cpu","memory","temperature","custom/endpoint"],
+        },
+        "custom/powersave": {
+            "format": "{}",
+            "return-type": "json",
+            "interval": 30,
+            "exec": "~/.config/waybar/scripts/powersave.sh",
+            "on-click": "~/.config/waybar/scripts/powersave.sh -t",
+            "signal": 9
         },
         "custom/colorpicker": {
             "format": "{}",

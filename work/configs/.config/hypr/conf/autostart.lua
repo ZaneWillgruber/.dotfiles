@@ -7,6 +7,8 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("swaync")
     hl.exec_cmd("swaync-client -df")
     hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
+    -- must follow the line above: picks up the freshly-published WAYLAND_DISPLAY
+    hl.exec_cmd("systemctl --user restart remote-opener.service")
     hl.exec_cmd("/usr/bin/gnome-keyring-daemon --start --components=secrets")
     hl.exec_cmd("/usr/lib/polkit-kde-authentication-agent-1")
     hl.exec_cmd("wl-paste --type text --watch cliphist store")  -- Stores only text data
