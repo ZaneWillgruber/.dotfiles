@@ -86,6 +86,13 @@ hl.window_rule({
 	opacity = "2",
 })
 
+hl.window_rule({
+	name = "zathura",
+	match = { class = "^(org\\.pwmt\\.zathura)$" },
+
+	opacity = "1.0 override 1.0 override",
+})
+
 -- blur
 hl.layer_rule({
 	name = "defaultBlur",
